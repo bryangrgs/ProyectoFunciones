@@ -49,7 +49,7 @@ string substring(string s,int d,int h)
 
 
 
-    return s.substr(d, longitud);
+    return  0; //s.substr(d, longitud) 0;
 }
 
 string substring(string s,int d) // ok
@@ -72,7 +72,15 @@ string substring(string s,int d) // ok
 
 int indexOf(string s,char c) // ok
 {
-
+   int i=0;
+   int n=0;
+   char x;
+   while(i == length(s) || i < n) {
+   if(i >= x && i < length(s)){
+      n = n + s[i];
+   }
+   i++;
+   }
    return 0;
 }
 
