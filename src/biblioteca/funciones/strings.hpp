@@ -132,8 +132,19 @@ int charToInt(char c)
 
 char intToChar(int i)
 {
-   return 'X';
-}
+ if (i >= 0 && i <= 9){
+
+    return i +'0';//Caracter numerico
+ }else if ( i >= 65 && i <= 90){
+       return i;
+ }else if (i <=65 ){
+    return i;
+ }else{
+    return -1; //caracter no valido
+ }
+    return i ;
+ }
+
 
 int getDigit(int n,int i)
 {
