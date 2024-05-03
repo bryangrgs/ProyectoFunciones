@@ -72,16 +72,21 @@ string substring(string s,int d) // ok
 
 int indexOf(string s,char c) // ok
 {
-   int i=0;
-   int n=0;
-   char x;
-   while(i == length(s) || i < n) {
-   if(i >= x && i < length(s)){
-      n = n + s[i];
+   int a = 0;
+   int t;
+   while (length(s)>a){
+
+      if(c==s[a]){
+         t=a+1;
+         break;
+      }
+      a++;
    }
-   i++;
-   }
-   return 0;
+   if (c!=s[a] && s[a]!='\0') {
+      cout<<"-1"<<endl;
+    }
+   return t;
+}
 }
 
 int indexOf(string s,char c,int offSet) // ok
