@@ -115,9 +115,20 @@ int indexOfN(string s,char c,int n)
 }
 
 int charToInt(char c)
-{
-   return 0;
+
+  {
+ if (c >= '0' && c <= '9'){
+
+    return c -'0';//Caracter numerico
+ }else if (c >= 'a' && c <= 'z'){
+       return c- 'a'+10; //letra minuscula
+ } else if (c >= 'A' && c <='Z'){
+    return c-'A'+10; //letra mayuscula
+ }else{
+    return -1 ;//caracter no valido
+ }
 }
+
 
 char intToChar(int i)
 {
