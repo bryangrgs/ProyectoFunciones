@@ -24,7 +24,9 @@ int main()
    cout<< substring(s,5)<<endl;
    int p = indexOf(s,'f');
    cout << p << endl;
-
+   char palabrita='D';
+   int valor= charToInt(palabrita);
+   cout << valor << endl;
    return 0;
 }
 
