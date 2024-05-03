@@ -22,7 +22,8 @@ int main()
    string s="Cadena a recorrer";
    //cout<< substring(s,2,length(s))<<endl;
    cout<< substring(s,5)<<endl;
-
+   int p = indexOf(s,'f');
+   cout << p << endl;
 
    return 0;
 }
