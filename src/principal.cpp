@@ -27,6 +27,9 @@ int main()
    char palabrita='D';
    int valor= charToInt(palabrita);
    cout << valor << endl;
+   int numerito=65;
+      char letrita= intToChar(numerito);
+      cout << letrita << endl;
    return 0;
 }
 
