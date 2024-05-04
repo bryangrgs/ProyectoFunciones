@@ -16,7 +16,7 @@ using namespace std;
 
 int main()
 {
-<<<<<<< HEAD
+
    /*
     cout<< length("Pirulito")<<endl;
     tutorial  1+i
@@ -55,22 +55,9 @@ int main()
       int digitocontador= digitCount(numerote);
       cout<< digitocontador<<endl;
       */
-=======
-   cout<< length("Pirulito")<<endl;
-   //tutorial  1+i
-   cout<< charCount("Apap.ku 6apa", 'x')<<endl;
-   string s="Cadena a recorrer";
-   //cout<< substring(s,2,length(s))<<endl;
-   cout<< substring(s,5)<<endl;
-   int p = indexOf(s,'f');
-   cout << p << endl;
-   char palabrita='D';
-   int valor= charToInt(palabrita);
-   cout << valor << endl;
-   int numerito=65;
-      char letrita= intToChar(numerito);
-      cout << letrita << endl;
->>>>>>> 1d3f19ed034dc238c1d40c8c5c5bb1baf4bc1453
+
+
+
    return 0;
 }
 
