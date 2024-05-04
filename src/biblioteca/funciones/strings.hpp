@@ -45,7 +45,7 @@ string substring(string s,int d,int h)
        //   return subCadena;
     //  }
 
-      int longitud = h - d;
+      //int longitud = h - d;
 
 
 
@@ -54,25 +54,48 @@ string substring(string s,int d,int h)
 
 string substring(string s,int d) // ok
 {
-   {
-           int i = 0;
-           string subCadena = "";
-           int cantCaracteres = length(s); //cantidad de caracteres que tiene
-           while(i == length(s) || i < cantCaracteres) {
-               if(i >= d && i < length(s)){
-                   subCadena = subCadena + s[i];
-               }
-               i++;
-           }
-           return subCadena;
-       }
-   }
-
-
-
+   return "";
+}
+/*
 int indexOf(string s,char c) // ok
 {
    int a = 0;
+<<<<<<< HEAD
+   while(s[a]!='\0' && s[a]!=c)
+   {
+      a++;
+   }
+
+   int ret = a;
+   if( s[a]=='\0' )
+   {
+      ret = -1;
+   }
+
+   return ret;
+}
+*/
+int indexOf(string s,char c) // ok
+{
+   int a = 0;
+   int t=-1;
+   while (a<length(s) && t<0)
+   {
+      if(s[a]==c)
+      {
+         t=a; //+1;
+      }
+      a++;
+   }
+
+/*
+   if(s[a]!='\0')
+   {
+   }
+*/
+
+   return t;
+=======
    int t;
    while (length(s)>a){
 
@@ -87,27 +110,93 @@ int indexOf(string s,char c) // ok
     }
    return t;
 }
+>>>>>>> 1d3f19ed034dc238c1d40c8c5c5bb1baf4bc1453
 }
 
 int indexOf(string s,char c,int offSet) // ok
 {
-   return 0;
+   int a = 0;
+   int t=-1;
+   while (a<length(s)&& t<0){
+
+      if(s[a]==c){
+         a=offSet;
+         t=a+1;
+      }
+      a++;
+   }
+
+   return t;
 }
 
 int indexOf(string s,string toSearch) // ok
 {
-   return 0;
+   int a = 0;
+   int t=-1;
+   int i=0;
+   while (a<length(s)&& t<0){
+
+      if(s[a]==toSearch[i]){
+         i++;
+         t=a+1;
+      }
+      a++;
+   }
+   /*
+   if (s[a]!=toSearch[i] && toSearch[i]!='\0') {
+      cout<<"-1"<<endl;
+    }
+    */
+   return t;
 }
 
 int indexOf(string s,string toSearch,int offset) // ok
 {
-   return 0;
-}
+   int a=offset;
+   int t=-1;
+   int i=0;
+   while (a<length(s)&& t<0){
+
+      if(s[a]==toSearch[i]){
+         i++;
+         t=a+1;
+      }
+      a++;
+   }
+   return t;
+ }
 
 int lastIndexOf(string s,char c)
 {
-   return 0;
+   int rep = charCount( s, c);
+   int a = 0;
+   int rc = 0;
+
+   while(length(s)>a && s[a]!='\0' && rep>rc){
+      if(s[a]==c){
+         rc++;
+      }
+      a++;
+   }
+   if(s[0]==c){
+      rep++;
+   }
+   cout << a <<endl;
+   cout << rep <<endl;
+   if(a>0){
+
+   }
+   if (a==0){
+      if (s[0]!=c && rep==0){
+         a=a-1;
+      } else {
+          a=1;
+       }
+   }
+
+  return a;
 }
+
 
 int indexOfN(string s,char c,int n)
 {
@@ -148,12 +237,23 @@ char intToChar(int i)
 
 int getDigit(int n,int i)
 {
-   return 0;
+   int digito = (n / static_cast<int>(pow(10, i ))) % 10;
+   return digito;
 }
 
 int digitCount(int n)
 {
-   return 0;
+   if(n == 0){
+      return 1; //0 tiene un solo digito
+   }
+   int contadordigito=0;
+   //iteramos mientras el numero no sea 0 :D
+   while (n != 0){
+      n /= 10;
+      //incrementamos el contador de digitos
+      contadordigito++;
+   }
+      return contadordigito;
 }
 
 string intToString(int i)
@@ -163,6 +263,7 @@ string intToString(int i)
 
 int stringToInt(string s,int b) // ok
 {
+
    return 0;
 }
 
