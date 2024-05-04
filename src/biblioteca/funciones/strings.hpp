@@ -95,8 +95,8 @@ int indexOf(string s,char c) // ok
 */
 
    return t;
-=======
-   int t;
+
+
    while (length(s)>a){
 
       if(c==s[a]){
@@ -110,8 +110,8 @@ int indexOf(string s,char c) // ok
     }
    return t;
 }
->>>>>>> 1d3f19ed034dc238c1d40c8c5c5bb1baf4bc1453
-}
+
+
 
 int indexOf(string s,char c,int offSet) // ok
 {
@@ -423,3 +423,4 @@ int cmpDouble(double a,double b)
 }
 
 #endif
+
