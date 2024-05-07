@@ -16,6 +16,7 @@ using namespace std;
 
 int main()
 {
+
    /*
     cout<< length("Pirulito")<<endl;
     tutorial  1+i
@@ -54,6 +55,9 @@ int main()
       int digitocontador= digitCount(numerote);
       cout<< digitocontador<<endl;
       */
+
+
+
    return 0;
 }
 

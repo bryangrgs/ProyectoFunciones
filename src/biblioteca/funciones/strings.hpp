@@ -60,6 +60,7 @@ string substring(string s,int d) // ok
 int indexOf(string s,char c) // ok
 {
    int a = 0;
+<<<<<<< HEAD
    while(s[a]!='\0' && s[a]!=c)
    {
       a++;
@@ -94,7 +95,23 @@ int indexOf(string s,char c) // ok
 */
 
    return t;
+
+
+   while (length(s)>a){
+
+      if(c==s[a]){
+         t=a+1;
+         break;
+      }
+      a++;
+   }
+   if (c!=s[a] && s[a]!='\0') {
+      cout<<"-1"<<endl;
+    }
+   return t;
 }
+
+
 
 int indexOf(string s,char c,int offSet) // ok
 {
