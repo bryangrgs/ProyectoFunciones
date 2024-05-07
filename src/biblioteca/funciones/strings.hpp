@@ -258,28 +258,50 @@ int digitCount(int n)
 
 string intToString(int i)
 {
-   return "";
+   return std::to_string(i);
 }
 
 int stringToInt(string s,int b) // ok
 {
+       int resultado = 0;
+       int potencia = 0;
 
-   return 0;
+       // Itera sobre los caracteres de la cadena de derecha a izquierda
+       for (int i = s.length() - 1; i >= 0; --i) {
+           char caracter = s[i];
+           int valorDigito = charToInt(caracter);
+
+           if (valorDigito == -1 || valorDigito >= b) {
+               std::cerr << "Error: Caracter inválido para la base " << b << std::endl;
+               return 0; // Carácter no válido para la base especificada
+           }
+
+           // Suma el valor del dígito multiplicado por la base elevada a la potencia correspondiente
+           resultado += valorDigito * std::pow(b, potencia);
+           ++potencia; // Incrementa la potencia para el siguiente dígito
+       }
+
+       return resultado;
 }
 
 int stringToInt(string s) // ok
 {
-   return 0;
+   return  std::stoi(s);
 }
 
 string charToString(char c)
 {
-   return "";
+   return std::string(1, c);
 }
 
 char stringToChar(string s)
 {
-   return 'X';
+   if (!s.empty()) {
+           return s[0]; // Devuelve el primer carácter de la cadena
+       } else {
+           // En caso de que la cadena esté vacía, devuelve un carácter por defecto  (' 0 ')
+           return '\0'; // Puedes devolver cualquier carácter que desees como valor por defecto
+       }
 }
 
 string stringToString(string s)

@@ -54,11 +54,31 @@ int main()
       cout<< digito<<endl;
       int digitocontador= digitCount(numerote);
       cout<< digitocontador<<endl;
-      */
 
+    int numero=123;
+    string resultado = intToString(numero);
+    cout<<resultado<<endl;
 
+    int b=16;
+    string cadenaStringtoInt ="12AB"; //Ingresar binarios decimal o hexa
+    int iStringtoint= stringToInt(cadenaStringtoInt,b);
+    cout<<iStringtoint<<endl;
 
+    string ssobrecar="12323";
+    int istringtoubtsobre= stringToInt(ssobrecar);
+    cout<<istringtoubtsobre<<endl;
+
+    char cchartistring = ' ';
+    string sChartostring = charToString(cchartistring);
+    cout << sChartostring << endl; // muestra: A
+    cout << length(sChartostring) << endl; // muestra: 1
    return 0;
+
+    string sStringtochar = " ";
+    char cstringtochar = stringToChar(sStringtochar);
+    cout << cstringtochar << endl; // muestra: A
+    cout << (int)cstringtochar << endl; // muestra: 65
+    */
 }
 
 #endif
