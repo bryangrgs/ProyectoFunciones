@@ -59,9 +59,9 @@ int main()
     string resultado = intToString(numero);
     cout<<resultado<<endl;
 
-    int b=16;
+    int b=16; //base del numero si es binario-hexadecimal
     string cadenaStringtoInt ="12AB"; //Ingresar binarios decimal o hexa
-    int iStringtoint= stringToInt(cadenaStringtoInt,b);
+    int iStringtoint= stringToInt(cadenaStringtoInt,b); 
     cout<<iStringtoint<<endl;
 
     string ssobrecar="12323";
