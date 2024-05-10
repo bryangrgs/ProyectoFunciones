@@ -304,21 +304,26 @@ char stringToChar(string s)
        }
 }
 
+char stringToChar(string s)
+{
+   return 'X';
+}
+
 string stringToString(string s)
 {
-   return "";
+   string v=s;
+   return v;
 }
 
 string doubleToString(double d)
 {
-   return "";
+   return std::to_string(d);
 }
 
 double stringToDouble(string s)
 {
-   return 1.1;
+   return std::stod(s);
 }
-
 bool isEmpty(string s)
 {
    bool a=false;
