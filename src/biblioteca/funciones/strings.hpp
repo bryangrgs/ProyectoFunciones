@@ -272,13 +272,13 @@ int stringToInt(string s,int b) // ok
            int valorDigito = charToInt(caracter);
 
            if (valorDigito == -1 || valorDigito >= b) {
-               std::cerr << "Error: Caracter inválido para la base " << b << std::endl;
-               return 0; // Carácter no válido para la base especificada
+               std::cerr << "Error: Caracter invÃ¡lido para la base " << b << std::endl;
+               return 0; // CarÃ¡cter no vÃ¡lido para la base especificada
            }
 
-           // Suma el valor del dígito multiplicado por la base elevada a la potencia correspondiente
+           // Suma el valor del dÃ­gito multiplicado por la base elevada a la potencia correspondiente
            resultado += valorDigito * std::pow(b, potencia);
-           ++potencia; // Incrementa la potencia para el siguiente dígito
+           ++potencia; // Incrementa la potencia para el siguiente dÃ­gito
        }
 
        return resultado;
@@ -297,10 +297,10 @@ string charToString(char c)
 char stringToChar(string s)
 {
    if (!s.empty()) {
-           return s[0]; // Devuelve el primer carácter de la cadena
+           return s[0]; // Devuelve el primer carÃ¡cter de la cadena
        } else {
-           // En caso de que la cadena esté vacía, devuelve un carácter por defecto  (' 0 ')
-           return '\0'; // Puedes devolver cualquier carácter que desees como valor por defecto
+           // En caso de que la cadena estÃ© vacÃ­a, devuelve un carÃ¡cter por defecto  (' 0 ')
+           return '\0'; // Puedes devolver cualquier carÃ¡cter que desees como valor por defecto
        }
 }
 
@@ -321,32 +321,95 @@ double stringToDouble(string s)
 
 bool isEmpty(string s)
 {
-   return true;
+   bool a=false;
+   if (s[0]=='\0'){
+      a=true;
+   }
+   else{
+      a=false;
+   }
+   return a;
 }
 
 bool startsWith(string s,string x)
 {
-   return true;
-}
+   bool a=false;
+   string medidor=substring(s, 0, length(x));
+   if (medidor==x){
 
+      a=true;
+   }
+   else {
+      a=false;
+   }
+
+   return a;
+}
 bool endsWith(string s,string x)
 {
-   return true;
-}
+   bool a=false;
+   int r=length(s)-length(x);
+   string medidor=substring(s, r, length(s));
+   if (x==medidor){
+      a=true;
+   }
+   else {
+      a=false;
+   }
 
+   return a;
+}
 bool contains(string s,char c)
 {
-   return true;
+   bool a=false;
+   int i = 0;
+   int n=0;
+   while (s[i]!='\0'){
+      if (s[i]==c){
+         n++;
+      }
+      i ++;
+      }
+   if (n==0){
+      a=false;
+   }
+   else {
+      a=true;
+   }
+
+   return a;
 }
 
 string replace(string s,char oldChar,char newChar)
 {
-   return "";
+   int i=0;
+   while (s[i]!='\0'){
+      if (s[i]==oldChar){
+         s[i]=newChar;
+      }
+      i++;
+   }
+   return s;
 }
 
 string insertAt(string s,int pos,char c)
 {
-   return "";
+   string r;
+   for (int i = 0; i < length(s); ++i) {
+      // Si llegamos a la posiciÃ³n deseada, agregamos el carÃ¡cter
+      if (i == pos) {
+          r += c;
+      }
+      // Agregamos el carÃ¡cter actual de la cadena original
+      r += s[i];
+  }
+
+  // Si la posiciÃ³n especificada estÃ¡ al final de la cadena, agregamos el carÃ¡cter al final
+  if (pos == length(s)) {
+      r += c;
+  }
+
+  return r;
 }
 
 string removeAt(string s,int pos)
@@ -376,7 +439,14 @@ string replicate(char c,int n)
 
 string spaces(int n)
 {
-   return "";
+   string s;
+   int i=0;
+   while (i<n){
+      s=s+' ';
+      i++;
+   }
+
+   return s;
 }
 
 string lpad(string s,int n,char c)
@@ -396,7 +466,15 @@ string cpad(string s,int n,char c)
 
 bool isDigit(char c)
 {
-   return true;
+   bool a=false;
+   int r=charToInt(c);
+   if (r>= 0 && r <= 9){
+      return c -'0';//Caracter numerico
+      a=true;
+   }else {
+      a=false;
+   }
+   return a;
 }
 
 bool isLetter(char c)
