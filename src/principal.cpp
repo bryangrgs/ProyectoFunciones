@@ -40,11 +40,11 @@ int main()
 
       int p = lastIndexOf(s,'e');
       cout << p << endl;
-      
+
       char palabrita='D';
         int valor= charToInt(palabrita);
         cout << valor << endl;
-        
+
       int numerito=65;
       char letrita= intToChar(numerito);
       cout << letrita << endl;
@@ -53,7 +53,7 @@ int main()
       int posicion=0;
       int digito= getDigit(numerote,posicion);
       cout<< digito<<endl;
-        
+
       int digitocontador= digitCount(numerote);
       cout<< digitocontador<<endl;
 
@@ -167,7 +167,50 @@ int main()
       cout << c << " NO es letra" << endl;
    }
   }
-*/
-}
+
+   string s1 = "Pablo";
+   string s2 = "Queso";
+   if( cmpString(s1,s2)<0 )
+   {
+   cout << s1 << " es menor que: " << s2 << endl;
+   }
+   else if(cmpString(s1,s2)>0){
+   cout << s1 << " es mayor que: " << s2 << endl;
+   }
+   else{
+   cout << s1 << " es igual que: " << s2 << endl;
+   }
+
+   double x = 25.7;
+   double y = 36.9;
+   if( cmpDouble(x,y)<0 )
+   {
+   cout << x << " es menor que: " << y << endl;
+   }
+   else if(cmpDouble(x,y)>0){
+      cout << x << " es mayor que: " << y << endl;
+      }
+   else{
+      cout << x << " es igual que: " << y << endl;
+     }
+
+   char c = 'n';
+   char r = toUpperCase(c);
+   cout << r << endl;
+   }
+
+   char c = 'n';
+   char r = toLowerCase(c);
+   cout << r << endl;
+
+   string s = "hola";
+   string r = toUpperCase(s);
+   cout << r << endl;
+   
+   string s = "HOLA";
+   string r = toLowerCase(s);
+   cout << r << endl;
+   */
+  }
 
 #endif
