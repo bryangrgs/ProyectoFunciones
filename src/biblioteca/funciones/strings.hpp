@@ -304,10 +304,7 @@ char stringToChar(string s)
        }
 }
 
-char stringToChar(string s)
-{
-   return 'X';
-}
+
 
 string stringToString(string s)
 {
