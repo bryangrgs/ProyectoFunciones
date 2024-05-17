@@ -481,47 +481,88 @@ bool isDigit(char c)
 
 bool isLetter(char c)
 {
-   return true;
+   bool a = false;
+   if (c>='a' && c<='z'){
+      a = true;}
+      else if (c>='A' && c<='Z'){
+         a = true;
+      }
+      else{
+         a = false;
+   }
+
+   return a;
 }
 
 bool isUpperCase(char c)
 {
-   return true;
+   bool a = false;
+   if (c>='A' && c<='Z'){
+      a = true;
+   }
+   else{
+      a = false;
+   }
+   return a;
 }
 
 bool isLowerCase(char c)
 {
-   return true;
+   bool a = false;
+      if (c>='a' && c<='z'){
+         a = true;
+      }
+      else{
+         a = false;
+      }
+      return a;
 }
 
 char toUpperCase(char c)
 {
-   return 'X';
+
+   if (c>=97 && c<=122){
+      c-=32;
+   }
+   return c;
 }
 
 char toLowerCase(char c)
 {
-   return 'X';
+   if (c>=65 && c<=90){
+      c+=32;
+   }
+   return c;
 }
 
 string toUpperCase(string s)
 {
-   return "";
+   int i = 0;
+   while (s[i]!= '\0' && i<length(s)){
+     char p = s[i];
+     s[i] = toUpperCase(p);
+      i++;
+   } return s;
 }
 
 string toLowerCase(string s)
 {
-   return "";
+   int i = 0;
+      while (s[i]!= '\0' && i<length(s)){
+        char p = s[i];
+        s[i] = toLowerCase(p);
+         i++;
+      } return s;
 }
 
 int cmpString(string a,string b)
 {
-   return 0;
+   return a>b?1:a<b?-1:0;
 }
 
 int cmpDouble(double a,double b)
 {
-   return 0;
+   return a>b?1:a<b?-1:0;
 }
 
 #endif
