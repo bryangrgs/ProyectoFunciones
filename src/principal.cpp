@@ -206,11 +206,36 @@ int main()
    string s = "hola";
    string r = toUpperCase(s);
    cout << r << endl;
-   
+
    string s = "HOLA";
    string r = toLowerCase(s);
    cout << r << endl;
-   */
+
+   string s = "Esto es una prueba";
+   string x = substring(s,2);
+   cout << x << endl; // muestra: to es una prueba
+
+
+   string s = "Esto es una prueba";
+   int pos = 7;
+   string r = removeAt(s,pos);
+   cout << r << endl; // SALIDA: Esto esuna prueba
+   // con espacios a izquierda
+   string s = "            Esto es una prueba";
+   string r = ltrim(s);
+   cout << "[" << r << "]" << endl; // [Esto es una prueba]
+*/
+   string s = "Esto es una prueba ";
+   string r = rtrim(s);
+   cout << "[" << r << "]" << endl; // [Esto es una prueba]
+   // sin espacios
+   s = "Esto es una prueba";
+   r = rtrim(s);
+   cout << "[" << r << "]" << endl; // [Esto es una prueba]
+   // con espacios a izquierda y derecha
+   s = " Esto es una prueba ";
+   r = rtrim(s);
+   cout << "[" << r << "]" << endl; // [ Esto es una prueba]
   }
 
 #endif
