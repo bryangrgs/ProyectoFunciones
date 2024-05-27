@@ -29,33 +29,36 @@ int charCount(string s,char c)
    }
    return n;
 }
-string substring(string s,int d,int h)
-{
-  // string substring(string s,int d,int h)
-    //  {
-        //  int i = 0;
-        //  string subCadena = "";
-        //  int cantCaracteres = length(s); //cantidad de caracteres que tiene
-         // while(i == h || i < cantCaracteres) {
-           //   if(i >= d && i < h){
-               //   subCadena = subCadena + s[i];
-         //     }
-        //      i++;
-       //   }
-       //   return subCadena;
-    //  }
 
-      //int longitud = h - d;
+   string substring(string s,int d,int h)
+      {
+          int i = 0;
+          string subCadena = "";
+          int cantCaracteres = length(s); //cantidad de caracteres que tiene
+          while(i == h || i < cantCaracteres) {
+              if(i >= d && i < h){
+                  subCadena = subCadena + s[i];
+              }
+             i++;
+          }
+          return subCadena;
+      }
 
 
 
-    return  0; //s.substr(d, longitud) 0;
-}
 
 string substring(string s,int d) // ok
 {
-   return "";
-}
+   string resultado;
+   int longitud= length(s);
+   if (d > longitud){
+      d=longitud;
+   }
+   for (int i=d; i<longitud;i++){
+      resultado+=s[i];
+   }
+   return resultado;
+   }
 /*
 int indexOf(string s,char c) // ok
 {
@@ -414,19 +417,46 @@ string insertAt(string s,int pos,char c)
   return r;
 }
 
-string removeAt(string s,int pos)
-{
-   return "";
-}
+string removeAt(string s,int pos){
+   if (pos < 0 || pos >= length(s)){
+      cout<<"fuera de rango"<<endl;
 
+   }
+  return substring(s,0,pos)+substring(s,pos+1);
+}/*
 string ltrim(string s)
 {
-   return "";
-}
+   int i = 0;
+   int r = 0;
+   bool letra = false;
+   while (i<=length(s) and letra == false ){
 
+      if (s[i]==' '){
+         r++;
+      } else {
+         letra = true;
+      }
+      i++;
+   }
+   return substring(s,r);
+}
+*/
 string rtrim(string s)
 {
-   return "";
+   int i = length(s);
+   int r = 0;
+   bool letra = false;
+
+   while (letra == false ){
+     if (s[i]==' '){
+        r++;
+     } else {
+        letra = true;
+     }
+     i--;
+  }
+
+  return substring(s,r);
 }
 
 string trim(string s)
@@ -565,5 +595,82 @@ int cmpDouble(double a,double b)
    return a>b?1:a<b?-1:0;
 }
 
-#endif
 
+
+
+
+
+
+
+
+
+
+/*string removeAt(string s,int pos)
+{
+   return "";
+}
+
+string ltrim(string s)
+{
+   return "";
+}
+
+string rtrim(string s)
+{
+   return "";
+}
+
+string trim(string s)
+{
+   return "";
+}
+
+string replicate(char c,int n)
+{
+   return "";
+}
+string lpad(string s,int n,char c)
+{
+   return "";
+}
+
+string rpad(string s,int n,char c)
+{
+   return "";
+}
+
+string cpad(string s,int n,char c)
+{
+   return "";
+}
+
+
+int indexOfN(string s,char c,int n)
+{
+   return 0;
+}
+
+*/
+int tokenCount(string s,char sep)
+{
+   return 0;
+}
+
+void addToken(string& s,char sep,string t)
+{
+}
+
+void removeTokenAt(string& s,char sep, int i)
+{
+}
+
+void setTokenAt(string& s,char sep, string t,int i)
+{
+}
+
+int findToken(string s,char sep, string t)
+{
+   return 0;
+}
+
+#endif
