@@ -7,12 +7,26 @@
 using namespace std;
 
 int tokenCount(string s,char sep)
-{
-   return 0;
+{//Cuenta la cantidad tokens que el separador sep genera en s.
+   int  i=0;
+   int r=1;
+   while(i<length(s)){
+      if(s[i]==sep){
+         r++;
+      }
+      i++;
+   }
+   return r;
 }
 
 void addToken(string& s,char sep,string t)
-{
+{//Agrega el token t al final de la cadena s.
+   if (s==""){
+      s=s+t;
+   }
+   else{
+      s=s+sep+t;
+   }
 }
 
 
@@ -53,15 +67,68 @@ string getTokenAt(string s,char sep, int i)
 }
 void removeTokenAt(string& s,char sep, int i)
 {
+   int ext = -1;
+   int c1=0;
+   while(c1<length(s) and ext<i){
+        if(s[c1]==sep){
+           ext++;
+        }
+        c1++;
+     }
+
+   int pr = 0;
+      int c2=0;
+      while(c2<length(s) and pr<i){
+           if(s[c2]==sep){
+              pr++;
+           }
+           c2++;
+        }
+      //cout << c1 << endl << c2 << endl;
+   s = substring(s,0,c2)+ substring(s,c1);
 }
 
 void setTokenAt(string& s,char sep, string t,int i)
 {
+   removeTokenAt(s,sep,i);
+   int pr = 0;
+   int c2 = 0;
+   while(c2<length(s) and pr<i){
+        if(s[c2]==sep){
+           pr++;
+        }
+        c2++;
+     }
+   int ext = -1;
+     int c1=0;
+     while(c1<length(s) and ext<i-1){
+          if(s[c1]==sep){
+             ext++;
+          }
+          c1++;
+       }
+      s = substring(s,0,c2) + t + substring(s,c1-1);
 }
 
 int findToken(string s,char sep, string t)
-{
-   return 0;
+{//Determinar la posición que el token t ocupa dentro de la cadena s.
+   int i = 0;
+   int pos = 0;
+   int res = 0;
+   int c2 = 0;
+
+   while(s[i]!='\0'){
+      while(s[c2]!=sep){
+            c2++;
+         }
+      if(substring(s,pos,c2)!= t){
+        res++;
+     } else {
+        pos=pos+c2;
+     }
+      i++;
+   }
+      return res;
 }
 
 #endif
