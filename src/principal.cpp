@@ -224,7 +224,7 @@ int main()
    string s = "            Esto es una prueba";
    string r = ltrim(s);
    cout << "[" << r << "]" << endl; // [Esto es una prueba]
-*/
+
    string s = "Esto es una prueba ";
    string r = rtrim(s);
    cout << "[" << r << "]" << endl; // [Esto es una prueba]
@@ -236,6 +236,49 @@ int main()
    s = " Esto es una prueba ";
    r = rtrim(s);
    cout << "[" << r << "]" << endl; // [ Esto es una prueba]
+
+   string s = "John";
+   char sep = '|';
+   int n = tokenCount(s,sep);
+   cout << n << endl;
+
+   string s = "";
+   char sep = '|';
+   addToken(s,sep,"John");
+   cout << s << endl;
+   addToken(s,sep,"Paul");
+   cout << s << endl; // Salida: John|Paul
+   addToken(s,sep,"George");
+   cout << s << endl; // Salida: John|Paul|George
+   addToken(s,sep,"Ringo");
+   cout << s << endl; // Salida: John|Paul|George|Ringo
+
+   string s = "John|Paul|George|Ringo";
+   char sep = '|';
+   int i = 2;
+   removeTokenAt(s,sep,i);
+   cout << s << endl; // Salida: John|Paul|Ringo
+   i = 0;
+   removeTokenAt(s,sep,i);
+   cout << s << endl; // Salida: Paul|Ringo
+
+   string s = "John|Paul|George|Ringo";
+   char sep = '|';
+   int i = 1;
+   string t = "McCartney";
+   setTokenAt(s,sep,t,i);
+   cout << s << endl; // Salida: John|McCartney|George|Ringo
+   */
+
+   string s = "John|Paul|George|Ringo";
+   char sep = '|';
+   string t = "Paul";
+   int p = findToken(s,sep,t);
+   cout << p << endl; // Salida: 1
+   /*string t = "John";
+   p = findToken(s,sep,t);
+   cout << p << endl; // Salida: 0*/
   }
+
 
 #endif
