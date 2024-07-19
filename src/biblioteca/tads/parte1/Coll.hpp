@@ -9,53 +9,77 @@ using namespace std;
 template<typename T>
 struct Coll
 {
+   string s;
+   char separador;
 };
 
+//Crea una colección vacía
+//preparada para contener elementos de tipo T;
 template<typename T>
 Coll<T> coll(char sep)
 {
-   Coll<T> c;
-   return c;
+   Coll<T> c;//definimos la coleccion
+   c.s="";//la creamos vacia
+   c.separador=sep;//utilizamos el separador por defecto
+   return c;//retornamos
 }
-
+//Crea una colección vacía
+//, preparada para contener elementos tipo T;
+//Nosotros definimos el separador
 template<typename T>
 Coll<T> coll()
 {
    Coll<T> c;
+   c.s="";
+   c.separador='|';//usamos un separador nosotros
    return c;
 }
 
 template<typename T>
 int collSize(Coll<T> c)
 {
-   return 0;
+   int cToken= tokenCount(c.s,c.separador);
+   return cToken;
 }
-
+//Remueve de la colección c todos sus elementos
+//, dejándola vacía.
 template<typename T>
 void collRemoveAll(Coll<T>& c)
 {
+   c.s="";
 }
-
+//>><Remueve<<< de la colección
+//c el elemento ubicado en la posición p.
+//tenemos un token para hacerlo?==> si!
 template<typename T>
 void collRemoveAt(Coll<T>& c, int p)
 {
+   removeTokenAt(c.s,c.separador,p);// =D
 }
-
+//Agrega el elemento t al final de la colección c.
 template<typename T>
 int collAdd(Coll<T>& c,T t,string tToString(T))
 {
-   return 0;
+   addToken(c.s,c.separador,tToString(t));
+   return tokenCount(c.s,c.separador)-1;
+   //Retorna: int - La posición que ocupa
+   //el elemento recientemente agregado.
+   //Coincide con el tamaño de la colección, menos 1.
 }
-
+//Reemplaza por t al elemento
+//que se ubica en la posición p.
 template <typename T>
 void collSetAt(Coll<T>& c,T t,int p,string tToString(T))
 {
+   setTokenAt(c.s,c.separador,tToString(t),p);
 }
 
+//Retorna: T - El elemento de c ubicado en la posición p.
 template <typename T>
 T collGetAt(Coll<T> c,int p,T tFromString(string))
 {
    T t;
+   t=tFromString(getTokenAt(c.s,c.separador,p));
    return t;
 }
 
