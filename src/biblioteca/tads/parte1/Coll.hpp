@@ -11,6 +11,7 @@ struct Coll
 {
    string s;
    char separador;
+   int posicionActual;
 };
 
 //Crea una colección vacía
@@ -86,37 +87,71 @@ T collGetAt(Coll<T> c,int p,T tFromString(string))
 template <typename T, typename K>
 int collFind(Coll<T> c,K k,int cmpTK(T,K),T tFromString(string))
 {
-   return 0;
+   for(int i=0; i< c.size();i++){
+      string stringedCurrentT = getTokenAt(c.elements,c.separador,i);
+      T currentT= tFromString (stringedCurrentT);
+      if(cmpTK(currentT,k)==0){
+         return i;
+      }
+   }
+   return -1;
 }
-
+// c.size == collSize(c) ?? no...
+//c.size retorna el n° de elementos
+//collsize toma la coleccion como argumento
+//retorna su tamaño
 template <typename T>
 void collSort(Coll<T>& c,int cmpTT(T,T),T tFromString(string),string tToString(T))
 {
+   int tokenN = collSize(c);
+   T a;
+   T b;
+   for (int i=0; i< tokenN -1; i++){
+      for(int q=0;q < tokenN -1-i;i++){
+         a= collGetAt(c, q, tFromString);
+         b= collGetAt(c,q+1,tFromString);
+         if(cmpTT(a,b)>0){
+            collSetAt(c,a,q+1,tToString);
+            collSetAt(c,b,q,tToString);
+         }
+      }
+   }
 }
 
 template<typename T>
 bool collHasNext(Coll<T> c)
 {
-   return true;
+   bool hasNext =false;
+   if (c.posicionActual < collSize(c)){
+      hasNext = true;
+
+   }
+
+   return hasNext;
 }
+
 
 template<typename T>
 T collNext(Coll<T>& c,T tFromString(string))
 {
-   T t;
+
+   T t=collGetAt(c,c.posicionActual,tFromString);
+   c.posicionActual++;
    return t;
 }
 
 template<typename T>
 T collNext(Coll<T>& c,bool& endOfColl,T tFromString(string))
 {
-   T t;
-   return t;
+   T t= collNext(c,tFromString);
+    endOfColl = collHasNext(c);
+    return t;
 }
 
 template<typename T>
 void collReset(Coll<T>& c)
 {
+   c.posicionActual=0;
 }
 
 #endif
