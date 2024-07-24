@@ -43,8 +43,8 @@ string getTokenAt(string s,char sep, int i)
     }
     else
     {
-        // caso si se quiere al ultimo token
-        if(i == cantidadToken - 1)
+        // caso si se quiere al ultimo token *** bryan arreglo
+        if(i == cantidadToken  )
         {
             // le sumo uno a posUltimoSep porque la funcion substring incluye este caracter, y no queremos que incluya sep
             int posUltimoSep = lastIndexOf(s,sep) + 1;
@@ -132,3 +132,6 @@ int findToken(string s,char sep, string t)
 }
 
 #endif
+
+#endif
+
