@@ -118,16 +118,18 @@ void collSort(Coll<T>& c,int cmpTT(T,T),T tFromString(string),string tToString(T
    }
 }
 
-template<typename T>
-bool collHasNext(Coll<T> c)
+template<typename T>//bryan resuelto
+bool collHasNext(Coll<T>& c)
 {
    bool hasNext =false;
-   if (c.posicionActual < collSize(c)){
+   if (c.posicionActual <= collSize(c)-1){
       hasNext = true;
+
 
    }
 
    return hasNext;
+
 }
 
 
@@ -136,15 +138,18 @@ T collNext(Coll<T>& c,T tFromString(string))
 {
 
    T t=collGetAt(c,c.posicionActual,tFromString);
+
    c.posicionActual++;
    return t;
+
+
 }
 
 template<typename T>
 T collNext(Coll<T>& c,bool& endOfColl,T tFromString(string))
 {
    T t= collNext(c,tFromString);
-    endOfColl = collHasNext(c);
+   endOfColl = collHasNext(c);
     return t;
 }
 
@@ -152,6 +157,20 @@ template<typename T>
 void collReset(Coll<T>& c)
 {
    c.posicionActual=0;
+}
+template<typename T>
+string collToString(Coll<T> c)
+{
+   return c.separador+c.s;
+}
+
+template<typename T>
+Coll<T> collFromString(string s)
+{
+   Coll<T> c;
+   c.separador=s[0];
+   c.s=substring(s,1);
+   return c;
 }
 
 #endif
