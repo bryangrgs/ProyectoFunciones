@@ -10,167 +10,160 @@ template<typename T>
 struct Coll
 {
    string s;
-   char separador;
-   int posicionActual;
+   char sep;
+   int pos;
 };
-
-//Crea una colección vacía
-//preparada para contener elementos de tipo T;
 template<typename T>
 Coll<T> coll(char sep)
 {
-   Coll<T> c;//definimos la coleccion
-   c.s="";//la creamos vacia
-   c.separador=sep;//utilizamos el separador por defecto
-   return c;//retornamos
+   Coll<T> c;
+   c.s="";
+   c.sep=sep;
+   c.pos = 0;
+   return c;
 }
-//Crea una colección vacía
-//, preparada para contener elementos tipo T;
-//Nosotros definimos el separador
+
 template<typename T>
 Coll<T> coll()
 {
    Coll<T> c;
    c.s="";
-   c.separador='|';//usamos un separador nosotros
+   //nosotros elegimos el separador
+   c.sep='|';
+   c.pos=0;
    return c;
 }
 
 template<typename T>
 int collSize(Coll<T> c)
 {
-   int cToken= tokenCount(c.s,c.separador);
-   return cToken;
+// int i=0;
+// if (i<length(c.s)){
+//    i++;
+// }
+   //usar tokenCount x los separadores.
+   int i=tokenCount(c.s,c.sep);
+   return i;
 }
-//Remueve de la colección c todos sus elementos
-//, dejándola vacía.
+
 template<typename T>
 void collRemoveAll(Coll<T>& c)
 {
-   c.s="";
+   bool s=false;
+   if (s ==false){
+      c.s="";
+   }
 }
-//>><Remueve<<< de la colección
-//c el elemento ubicado en la posición p.
-//tenemos un token para hacerlo?==> si!
+
 template<typename T>
 void collRemoveAt(Coll<T>& c, int p)
 {
-   removeTokenAt(c.s,c.separador,p);// =D
+   cout<<"ingrese la posicion que quiera eliminar: "<<endl;
+   cin>>p;
+   removeTokenAt(c.s,c.sep,p);
 }
-//Agrega el elemento t al final de la colección c.
+
 template<typename T>
 int collAdd(Coll<T>& c,T t,string tToString(T))
 {
-   addToken(c.s,c.separador,tToString(t));
-   return tokenCount(c.s,c.separador)-1;
-   //Retorna: int - La posición que ocupa
-   //el elemento recientemente agregado.
-   //Coincide con el tamaño de la colección, menos 1.
+   addToken(c.s,c.sep,tToString(t));
+   return tokenCount(c.s,c.sep)-1;
 }
-//Reemplaza por t al elemento
-//que se ubica en la posición p.
+
 template <typename T>
 void collSetAt(Coll<T>& c,T t,int p,string tToString(T))
 {
-   setTokenAt(c.s,c.separador,tToString(t),p);
+   setTokenAt(c.s,c.sep,tToString(t),p);
 }
 
-//Retorna: T - El elemento de c ubicado en la posición p.
 template <typename T>
 T collGetAt(Coll<T> c,int p,T tFromString(string))
 {
    T t;
-   t=tFromString(getTokenAt(c.s,c.separador,p));
+   t=tFromString(getTokenAt(c.s,c.sep,p));
    return t;
 }
 
 template <typename T, typename K>
 int collFind(Coll<T> c,K k,int cmpTK(T,K),T tFromString(string))
 {
-   for(int i=0; i<= tokenCount(c.s,c.separador)-1;i++){
-      string stringedCurrentT = getTokenAt(c.s,c.separador,i);
-      T currentT= tFromString (stringedCurrentT);
-      if(cmpTK(currentT,k)==0){
-         return i;
+   int ret=-1;
+   for (int pos=0; ret==-1 && pos<collSize(c);pos++){
+      T t=collGetAt<T>(c,pos,tFromString);
+      int compara=cmpTK(t,k);
+      if (compara==0){
+         return pos;
       }
    }
-   return -1;
+
+   return ret;
 }
-// c.size == collSize(c) ?? no...
-//c.size retorna el n° de elementos
-//collsize toma la coleccion como argumento
-//retorna su tamaño
+
 template <typename T>
 void collSort(Coll<T>& c,int cmpTT(T,T),T tFromString(string),string tToString(T))
 {
-   int tokenN = collSize(c);
-   T a;
-   T b;
-   for (int i=0; i< tokenN -1; i++){
-      for(int q=0;q < tokenN -1-i;i++){
-         a= collGetAt(c, q, tFromString);
-         b= collGetAt(c,q+1,tFromString);
-         if(cmpTT(a,b)>0){
-            collSetAt(c,a,q+1,tToString);
-            collSetAt(c,b,q,tToString);
+   for (int i=0; i<collSize(c); i++)
+   {
+      for (int j=i+1; j<collSize(c); j++)
+      {
+         T elem1=collGetAt(c,i,tFromString);
+         T elem2=collGetAt(c,j,tFromString);
+         if (cmpTT(elem1,elem2)<0)
+         {
+            T aux=elem1;
+            collSetAt<T>(c,elem2,i,tToString);
+            collSetAt<T>(c,aux,j,tToString);
          }
       }
    }
 }
 
-template<typename T>//bryan resuelto
-bool collHasNext(Coll<T>& c)
+template<typename T>
+bool collHasNext(Coll<T> c)
 {
-   bool hasNext =false;
-   if (c.posicionActual <= collSize(c)-1){
-      hasNext = true;
 
-
+ //for (int i=0;i<collSize(c)-1;i++){
+ //   if (i==collSize(c)){
+ //      return false;
+ //   }
+ //}
+ //return true;
+   bool ret;
+   if (c.pos<collSize(c))
+   {
+      ret=true;
    }
-
-   return hasNext;
-
+   else
+   {
+      ret=false;
+   }
+   return ret;
 }
-
 
 template<typename T>
 T collNext(Coll<T>& c,T tFromString(string))
 {
-
-   T t=collGetAt(c,c.posicionActual,tFromString);
-
-   c.posicionActual++;
+   T t = collGetAt(c,c.pos,tFromString);
+   c.pos +=1;
    return t;
-
-
 }
 
 template<typename T>
-T collNext(Coll<T>& c,bool& endOfColl,T tFromString(string))
+T collNext(Coll<T>& c,bool& endOfColl,T tFromString(string)) //sobrecarga
 {
-   T t= collNext(c,tFromString);
-   endOfColl = collHasNext(c);
-    return t;
+   T t;
+   if(!endOfColl)
+   {
+         T t = collNext(c,tFromString);
+         endOfColl=collHasNext(c);
+   }
+   return t;
 }
 
-template<typename T>
+template <typename T>
 void collReset(Coll<T>& c)
 {
-   c.posicionActual=0;
-}
-template<typename T>
-string collToString(Coll<T> c)
-{
-   return c.separador+c.s;
-}
-
-template<typename T>
-Coll<T> collFromString(string s)
-{
-   Coll<T> c;
-   c.separador=s[0];
-   c.s=substring(s,1);
-   return c;
+   c.pos=0;
 }
 
 #endif
