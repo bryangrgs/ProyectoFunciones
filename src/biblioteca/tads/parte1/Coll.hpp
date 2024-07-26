@@ -87,7 +87,7 @@ T collGetAt(Coll<T> c,int p,T tFromString(string))
 template <typename T, typename K>
 int collFind(Coll<T> c,K k,int cmpTK(T,K),T tFromString(string))
 {
-   for(int i=0; i< c.size();i++){
+   for(int i=0; i<= tokenCount(c.elements,c.separador)-1;i++){
       string stringedCurrentT = getTokenAt(c.elements,c.separador,i);
       T currentT= tFromString (stringedCurrentT);
       if(cmpTK(currentT,k)==0){
