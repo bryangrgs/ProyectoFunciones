@@ -125,7 +125,20 @@ void setTokenAt(string& s,char sep, string t,int i)
 
 int findToken(string s,char sep, string t)
 {//Determinar la posición que el token t ocupa dentro de la cadena s.
-   int i = 0;
+   //Función corregida:
+   int cantidadToken = tokenCount(s,sep);
+   int pos = -1;
+   for(int c = 0; c < cantidadToken; c++)
+   {
+      string token = getTokenAt(s,sep,c);
+      if (token == t)
+      {
+         pos = c;
+      }
+   }
+   return pos;
+   // Función anterior:
+   /*int i = 0;
    int pos = 0;
    int res = 0;
    int c2 = 0;
@@ -141,7 +154,7 @@ int findToken(string s,char sep, string t)
      }
       i++;
    }
-      return res;
+      return res;*/
 }
 
 #endif
